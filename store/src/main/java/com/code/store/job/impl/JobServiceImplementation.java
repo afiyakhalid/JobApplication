@@ -21,4 +21,14 @@ public class JobServiceImplementation implements JobService {
         //sets the id to the job posted and increments itself to get added to another job posting
     jobs.add(job);
     }
+
+    @Override
+    public Job getJobById(Long id) {
+        for (Job job : jobs) {
+            if (job.getId().equals(id)) {//comparing the job list id with the id mentioned in url
+                return job;
+            }
+        }
+        return null;
+    }
 }

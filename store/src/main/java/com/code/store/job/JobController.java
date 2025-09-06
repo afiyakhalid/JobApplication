@@ -1,14 +1,15 @@
 package com.code.store.job;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 import java.util.ArrayList;
+
+
 
 @RestController
 public class JobController {
@@ -23,9 +24,16 @@ public class JobController {
         return jobservice.findAll();
     }
     @PostMapping("/jobs")
-    public String createJob(@RequestBody Job job){
+    public ResponseEntity<String> createJob(@RequestBody Job job){
 
                 jobservice.createJob(job);
-                return "job added succesfully";
+                return  new ResponseEntity<>("Job added succesfully",HttpStatus.OK);
+    }
+    @GetMapping("/jobs/{id}")
+    public ResponseEntity<Job> getJobById(@PathVariable Long id){
+    Job job=jobservice.getJobById(id);
+        if (job!=null){
+        return new ResponseEntity<>(job, HttpStatus.OK) ;}
+        return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
