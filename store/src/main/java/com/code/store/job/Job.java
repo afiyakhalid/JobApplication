@@ -1,12 +1,22 @@
 package com.code.store.job;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Job {
+    @Id
+
     private Long Id;
     private String title;
     private String description;
      private String minSalary;
      private String maxSalary;
      private String location;
+
+
 
     public Long getId() {
         return Id;
@@ -55,6 +65,9 @@ public class Job {
     public void setLocation(String location) {
         this.location = location;
     }
+    public Job() {
+
+    }
 
     public Job(Long id, String title, String description, String minSalary, String maxSalary, String location) {
         Id = id;
@@ -66,3 +79,4 @@ public class Job {
 
     }
 }
+
