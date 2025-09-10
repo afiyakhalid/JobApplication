@@ -27,7 +27,7 @@ public class JobServiceImplementation implements JobService {
 
     @Override
     public void createJob(Job job) {
-        job.setId(nextId++);
+
         //sets the id to the job posted and increments itself to get added to another job posting
         jobRepository.save(job);
     }

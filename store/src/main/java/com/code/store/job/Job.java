@@ -1,20 +1,19 @@
 package com.code.store.job;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.code.store.companies.Company;
+import jakarta.persistence.*;
 
 @Entity
 public class Job {
     @Id
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
     private String title;
     private String description;
      private String minSalary;
      private String maxSalary;
      private String location;
+
 
 
 
@@ -64,6 +63,15 @@ public class Job {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+    @ManyToOne
+    private Company company;
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
     public Job() {
 

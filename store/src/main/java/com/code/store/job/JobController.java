@@ -1,5 +1,6 @@
 package com.code.store.job;
 
+import com.code.store.companies.Company;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,7 @@ public class JobController {
     public ResponseEntity<String> createJob(@RequestBody Job job){
 
                 jobservice.createJob(job);
+                Company c=job.getCompany();
                 return  new ResponseEntity<>("Job added succesfully",HttpStatus.CREATED);
     }
     @GetMapping("/jobs/{id}")
