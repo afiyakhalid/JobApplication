@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 
 @RestController
-@RequestMapping("companies/{comapanyId}")
+@RequestMapping("companies/{companyId}")
 public class reviewController {
     private reviewService reviewservice;
 
@@ -45,9 +45,9 @@ public class reviewController {
         return  new  ResponseEntity<>(reviewservice.getReviewid(companyId,reviewId),HttpStatus.OK);
     }
 
-    @DeleteMapping("/reviews/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id){
-        boolean deleted=reviewservice.delete(id);
+    @DeleteMapping("/reviews/{reviewId}")
+    public ResponseEntity<String> delete(@PathVariable Long companyId, Long reviewId){
+        boolean deleted=reviewservice.delete(companyId,reviewId);
         if(deleted){
             return new ResponseEntity<>("review deleted successfully",HttpStatus.OK);
         }

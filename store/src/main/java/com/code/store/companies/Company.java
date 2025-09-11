@@ -1,6 +1,7 @@
 package com.code.store.companies;
 
 import com.code.store.job.Job;
+import com.code.store.reviews.Review;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -16,10 +17,14 @@ public class Company {
     @OneToMany(mappedBy = "company")
     @JsonIgnore
     private List<Job> jobs;
+    @OneToMany(mappedBy = "company")
+    private List<Review> reviews;
+
     //private List<Review> reviews;
-    public Company(){
+    public Company() {
 
     }
+
     public long getId() {
         return id;   // ✅ add this getter
     }
@@ -27,6 +32,7 @@ public class Company {
     public void setId(long id) {
         this.id = id;
     }
+
     public String getDescription() {
 
         return description;
@@ -43,14 +49,21 @@ public class Company {
     }
 
     public void setName(String name) {
-        this.name=name;
+        this.name = name;
     }
 
-    public List<Job > getJobs() {
-    return jobs;
+    public List<Job> getJobs() {
+        return jobs;
     }
 
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }
+
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+
 }

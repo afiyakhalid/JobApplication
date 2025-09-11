@@ -9,7 +9,7 @@ public interface reviewService {
 
     boolean  updatedreview(Long companyId,Long reviewId,Review review);
     boolean create( Long companyId,Review review);
-    boolean delete(Long id);
+    boolean delete(Long companyId,Long reviewId);
     Review getReviewid(Long companyId,Long reviewId);
 
 
